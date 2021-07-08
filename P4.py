@@ -4,6 +4,46 @@ import time
 
 # Modulación 16-QAM
 
+from PIL import Image
+import numpy as np
+
+def fuente_info(imagen):
+    '''Una función que simula una fuente de
+    información al importar una imagen y 
+    retornar un vector de NumPy con las 
+    dimensiones de la imagen, incluidos los
+    canales RGB: alto x largo x 3 canales
+
+    :param imagen: Una imagen en formato JPG
+    :return: un vector de pixeles
+    '''
+    img = Image.open(imagen)
+    
+    return np.array(img)
+
+def rgb_a_bit(array_imagen):
+    '''Convierte los pixeles de base 
+    decimal (de 0 a 255) a binaria 
+    (de 00000000 a 11111111).
+
+    :param imagen: array de una imagen 
+    :return: Un vector de (1 x k) bits 'int'
+    '''
+    # Obtener las dimensiones de la imagen
+    x, y, z = array_imagen.shape
+    
+    # Número total de elementos (pixeles x canales)
+    n_elementos = x * y * z
+
+    # Convertir la imagen a un vector unidimensional de n_elementos
+    pixeles = np.reshape(array_imagen, n_elementos)
+
+    # Convertir los canales a base 2
+    bits = [format(pixel, '08b') for pixel in pixeles]
+    bits_Rx = np.array(list(''.join(bits)))
+    
+    return bits_Rx.astype(int)
+
 def modulador_16_QAM(bits, fc, mpp):
     '''Un método que simula el esquema de 
     modulación digital BPSK.
@@ -175,6 +215,26 @@ def demodulador_16_QAM(senal_Rx, portadora_cos, portadora_sin, mpp):
             bits_Rx[3+i*4] = 0
 
     return bits_Rx.astype(int)
+
+def bits_a_rgb(bits_Rx, dimensiones):
+    '''Un blque que decodifica el los bits
+    recuperados en el proceso de demodulación
+
+    :param: Un vector de bits 1 x k 
+    :param dimensiones: Tupla con dimensiones de la img.
+    :return: Un array con los pixeles reconstruidos
+    '''
+    # Cantidad de bits
+    N = len(bits_Rx)
+
+    # Se reconstruyen los canales RGB
+    bits = np.split(bits_Rx, N / 8)
+
+    # Se decofican los canales:
+    canales = [int(''.join(map(str, canal)), 2) for canal in bits]
+    pixeles = np.reshape(canales, dimensiones)
+
+    return pixeles.astype(np.uint8)
 
 # Parámetros
 fc = 5000  # frecuencia de la portadora
