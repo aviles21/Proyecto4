@@ -11,10 +11,10 @@
 ## Modulación 16-QAM
 
 ### Imagen transmitida e imagen recuperada
-![](Modulacion.png)
+![](Modulacion.svg)
 
 ### Onda transmitida y onda transmitida con ruido
-![](Ondas.png)
+![](Ondas.svg)
 
 #### En esta sección del proyecto se procedió a simular el procedimiento de transmisión de imágenes mediante la modulación 16-QAM, para ello fue necesario realizar una nueva función moduladora y demoduladora que trabajaran con 4 bits por símbolo. Para la prueba anteriormente realizada se utilizó una relación señal-a-ruido del canal (SNR) de -5 dB, por lo que la onda transmitida tuvo una afectación considerable y desembocó en una imagen recuperada con errores, pero se puede notar la gran similitud entre la imagen inicial y la final.
 ---
@@ -23,4 +23,4 @@
 
 ### Densidad obtenida
 
-![](Densidad.png)
+![](Densidad.svg)
