@@ -24,3 +24,5 @@
 ### Densidad obtenida
 
 ![](Densidad.jpg)
+
+#### En esta sección se debe utilizar la transformada de Fourier y la fórmula provista en el enunciado para determinar la densidad espectral de potencia, para el caso de la modulación 16-QAM se puede determinar que la frecuencia central se da a los 5 kHz (como era esperado) y también se presentan otras frecuencias secundarias que son propias de la modulación 16-QAM.
