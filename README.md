@@ -18,7 +18,12 @@
 
 #### En esta sección del proyecto se procedió a simular el procedimiento de transmisión de imágenes mediante la modulación 16-QAM, para ello fue necesario realizar una nueva función moduladora y demoduladora que trabajaran con 4 bits por símbolo. Para la prueba anteriormente realizada se utilizó una relación señal-a-ruido del canal (SNR) de -5 dB, por lo que la onda transmitida tuvo una afectación considerable y desembocó en una imagen recuperada con errores, pero se puede notar la gran similitud entre la imagen inicial y la final.
 ---
+### Estacionaridad y ergodicidad
 
+#### Se puede determinar que la señal modulada que transmite la imagen consiste en un proceso aleatorio estacionario en sentido amplio puesto que la modulación es de la forma: s(t) = A_1 cos(2*pi f_c t) + A_2 sin(2*pi f_c t) y se sabe que los promedios temporales de las componentes coseno y seno serán de 0.
+
+#### Ahora, como se conoce que este proceso aleatorio es estacionario en sentido amplio, también se puede decir que es ergódico puesto que los promedios temporales van a ser iguales que los promedios estadísticos.
+---
 ## Densidad espectral de potencia
 
 ### Densidad obtenida
